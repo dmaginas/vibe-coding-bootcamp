@@ -77,6 +77,15 @@ export default function ShimmerQuote({ text }: { text: string }) {
         &bdquo;{displayed}<span className={`typing-cursor ${done ? "hidden" : ""}`}>|</span>&ldquo;
       </p>
       <div className="accent-bar mx-auto mt-8" />
+
+      {done && (
+        <button
+          onClick={handleShare}
+          className="mt-8 px-5 py-2 rounded-full border border-accent text-sm font-medium share-btn"
+        >
+          {copied ? "Kopiert!" : "Teilen"}
+        </button>
+      )}
     </div>
   );
 }
