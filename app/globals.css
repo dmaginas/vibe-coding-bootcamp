@@ -17,12 +17,8 @@ body {
 /* ── Shimmer-Effekt für das Motto ── */
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .shimmer-text {
@@ -97,6 +93,74 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: blob-move-3 18s ease-in-out infinite;
+}
+
+/* ── 3D Tilt Card ── */
+
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(232, 80, 62, 0.15);
+  backdrop-filter: blur(2px);
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Cyberpunk Glitch ── */
+
+@keyframes glitch-1 {
+  0%   { clip-path: inset(15% 0 65% 0); transform: translate(-5px, 2px); }
+  25%  { clip-path: inset(55% 0 10% 0); transform: translate(5px, -3px); }
+  50%  { clip-path: inset(75% 0 3%  0); transform: translate(-3px, 5px); }
+  75%  { clip-path: inset(8%  0 78% 0); transform: translate(4px, -2px); }
+  100% { clip-path: inset(0%  0 100% 0); transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitch-2 {
+  0%   { clip-path: inset(62% 0 18% 0); transform: translate(5px, -3px); }
+  33%  { clip-path: inset(12% 0 72% 0); transform: translate(-4px, 4px); }
+  66%  { clip-path: inset(42% 0 32% 0); transform: translate(3px, -5px); }
+  100% { clip-path: inset(0%  0 100% 0); transform: translate(0, 0); opacity: 0; }
+}
+
+.glitch-active {
+  position: relative;
+}
+
+.glitch-active::before,
+.glitch-active::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font: inherit;
+  text-align: inherit;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  pointer-events: none;
+}
+
+.glitch-active::before {
+  color: #E8503E;
+  animation: glitch-1 0.45s steps(2) forwards;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.glitch-active::after {
+  color: #4488ff;
+  animation: glitch-2 0.45s steps(3) forwards;
+  z-index: 2;
+  opacity: 0.75;
 }
 
 /* ── Share Button ── */
