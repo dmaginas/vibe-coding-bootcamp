@@ -44,6 +44,28 @@ body {
   padding: 0.1em 0;
 }
 
+/* ── Typing-Effekt ── */
+
+.typing-text {
+  color: var(--color-dark);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: var(--color-accent);
+  animation: blink 0.7s step-start infinite;
+  margin-left: 2px;
+}
+
+.typing-cursor.hidden {
+  display: none;
+}
+
 /* ── Akzentlinie ── */
 
 .accent-bar {
